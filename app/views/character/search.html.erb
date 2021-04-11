@@ -1,0 +1,43 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    .column {
+    float: left;
+    margin-left: 360px;
+    width: 50%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+ <body>
+    <% if @character.length > 0%>
+    <div class="row">
+        <div class="column">
+        <h2 style="text-align:center; color:green;font-size:20px;">Personajes que calzan con tu búsqueda</h2>
+        <dl>
+      <% @character.each do |character| %> 
+        <% nombre = character['name'] %>
+      <% if character['name'][-1] == "." %>
+      <% nombre[-1] = ""%>
+      <% end %>
+        <dt style="text-align:center"><%= link_to character['name'], character_show_path(nombre) %></dt>
+        <% end %>
+        </dl>
+      
+        </div>
+    </div>
+    <% else %>
+    <div class="column">
+        <h2 style="text-align:center; color:green;font-size:20px;">Ningun personaje calza con tu búsqueda :(. Haz otra búsqueda o presiona inicio</h2>
+    </div>
+    <% end %>
+ </body>
+</html>

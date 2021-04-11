@@ -1,0 +1,41 @@
+<h1 style="text-align:center">Aquí puedes encontrar todo sobre Breaking Bad y Better Call Saul!</h1>
+
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    .column {
+    float: left;
+    width: 50%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+ <body>
+    <div class="row">
+        <div class="column">
+        <h2 style="text-align:center; color:green;font-size:20px;">Temporadas de Breaking Bad</h2>
+        <dl>
+        <% @seasonsbb.each do |season| %>    
+          <dt style="text-align:center"><%= link_to "Temporada " + season, seasonsbb_index_path(season) %></dt>
+          <% end %>
+        </dl>
+        </div>
+        <div class="column">
+        <h2 style="text-align:center;color:green;font-size:20px;">Temporadas de Better Call Saul</h2>
+        <dl>
+        <% @seasonsbc.each do |season| %>    
+          <dt style="text-align:center"><%= link_to "Temporada " + season, seasonsbcs_index_path(season) %></dt>
+          <% end %>
+        </dl>
+        </div>
+    </div>
+ </body>
+</html>

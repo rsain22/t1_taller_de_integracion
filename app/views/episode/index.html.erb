@@ -1,0 +1,75 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    .column {
+    float: left;
+    width: 50%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+ <body>
+    <div class="row">
+        <div style= "text-align:center"class="column">
+            <h2 style="color:green;font-size:20px;">Nombre del Episodio</h2>
+            <dl>
+            <% @episode.each do |episode| %>  
+                <dt><%= episode['title'] %></dt>
+            </dl>
+            <% end %>
+            <h2 style="color:green;font-size:20px;">Temporada</h2>
+            <dl>
+            <% @episode.each do |episode| %>  
+              <dt><%= episode['season'] %></dt>
+            </dl>
+            <% end %>
+            <h2 style="color:green;font-size:20px;">Serie</h2>
+            <dl>
+            <% @episode.each do |episode| %>  
+              <dt><%= episode['series'] %></dt>
+            </dl>
+            <% end %>
+            <h2 style="color:green;font-size:20px;">Personajes que aparecen</h2>
+            <dl>
+            <% @episode.each do |episode| %>
+            <% episode['characters'].each do |character| %>
+              <% nombre = character %>
+              <% if character[-1] == "." %>
+              <% nombre[-1] = ""%>
+              <% end %>
+              <dt><%= link_to character, character_show_path(nombre) %></dt>
+              <% end %>
+              <% end %>
+            </dl>
+        </div>
+        <div style= "text-align:center"class="column">
+        <h2 style="color:green;font-size:20px;">ID del Episodio</h2>
+      <dl>
+      <% @episode.each do |episode| %>  
+        <dt><%= episode['episode_id'] %></dt>
+      </dl>
+      <% end %>
+      <h2 style="color:green;font-size:20px;">Número en su temporada</h2>
+      <dl>
+      <% @episode.each do |episode| %>  
+        <dt><%= episode['episode'] %></dt>
+      </dl>
+      <% end %>
+      <h2 style="color:green;font-size:20px;">Fecha de estreno</h2>
+      <dl>
+      <% @episode.each do |episode| %>  
+        <dt><%= episode['air_date'] %></dt>
+      </dl>
+      <% end %>
+        </div>
+    </div>
+ </body>
+</html>

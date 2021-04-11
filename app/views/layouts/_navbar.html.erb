@@ -1,0 +1,21 @@
+<header>
+    <div class="container">
+      <h1 class="logo"></h1>
+      <%= image_tag("https://i.pinimg.com/originals/e5/9f/9c/e59f9c0f7bc8b14d0659aaf4977bdb13.jpg" , size: "110x110")%>
+      <nav>
+        <ul>
+          <li><%= link_to "INICIO", root_path%></li>
+          <li><div class="mx-auto mt-5" style="width: 400px">
+          <%= form_with(url: character_search_path, method: 'get', local: true) do %>
+          <div class="form-group">
+          <%= label_tag :character, 'Busca un personaje '%>
+          <%= text_field_tag :character, nil, placeholder: 'Ej: Walter White', class: 'form-control' %>
+          </div>
+
+          <%= button_tag 'Buscar', class: 'btn btn-success btn-block' %></li>
+        <% end %>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>

@@ -1,0 +1,36 @@
+<nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item">
+        <%= image_tag("https://i.pinimg.com/originals/e5/9f/9c/e59f9c0f7bc8b14d0659aaf4977bdb13.jpg" , size: "180x110") %>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+    
+            <%= link_to "Inicio", class: "navbar-item" %>
+            <%= link_to "Locales", class: "navbar-item" %>
+            <%= link_to "Personas", class: "navbar-item" %>
+            
+            <%= link_to "Perfil", class: "navbar-item" %>
+
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          
+            <%= link_to "Cerrar Sesión", class: "button is-danger" %>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

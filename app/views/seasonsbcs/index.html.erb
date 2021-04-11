@@ -1,0 +1,38 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    .column {
+    float: left;
+    margin-left: 360px;
+    width: 50%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+ <body>
+    <% if @episode.length == 0%>
+    <div class="column">
+    <h2 style="text-align:center; color:green;font-size:20px;"><%= link_to "Lo sentimos, no hay información sobre esta temporada, vuelve al inicio" , root_path %></h2>
+    <% else%>
+    </div>
+    <div class="row">
+        <div class="column">
+        <h2 style="text-align:center; color:green;font-size:20px;"><%= "Temporada #{@episode[1]['season']} de Better Call Saul"%></h2>
+        <dl>
+      <% @episode.each do |episode| %>
+        <dt style="text-align:center"><%= link_to episode['title'], episode_index_path(episode['episode_id']) %></dt>
+        <% end %>
+      </dl>
+        </div>
+    </div>
+    <% end %>
+ </body>
+</html>

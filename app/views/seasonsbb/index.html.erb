@@ -1,0 +1,32 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    .column {
+    float: left;
+    margin-left: 360px;
+    width: 50%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+ <body>
+    <div class="row">
+        <div class="column">
+        <h2 style="text-align:center; color:green;font-size:20px;"><%= "Temporada #{@episode[1]['season']} de Breaking Bad"%></h2>
+        <dl>
+      <% @episode.each do |episode| %>
+        <dt style="text-align:center"><%= link_to episode['title'], episode_index_path(episode['episode_id']) %></dt>
+        <% end %>
+      </dl>
+        </div>
+    </div>
+ </body>
+</html>

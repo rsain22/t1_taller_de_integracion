@@ -1,0 +1,100 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    .column {
+    float: left;
+    width: 50%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+ <body>
+    <div class="row">
+        <div style= "text-align:center"class="column">
+            <h2 style="color:green;font-size:20px;">Nombre del Personaje</h2>
+            <dl>
+            <% @character.each do |character| %>  
+              <dt><%= character['name'] %></dt>
+            </dl>
+            <% end %>
+            <h2 style="color:green;font-size:20px;">Imagen</h2>
+            <dl>
+            <% @character.each do |character| %>  
+              <dt><%= image_tag(character['img'], size: "120x160") %></dt>
+            </dl>
+            <% end %>
+            <h2 style="color:green;font-size:20px;">Ocupaciones</h2>
+            <dl>
+            <% @character.each do |character| %>  
+              <% character['occupation'].each do |occupation|%>
+              <dt><%= occupation %></dt>
+              <% end %>
+              <% end %>
+              </dl>
+            
+            <h2 style="color:green;font-size:20px;">Estatus</h2>
+            <dl>
+            <% @character.each do |character| %>  
+              <dt><%= character['status'] %></dt>
+            </dl>
+            <% end %>
+            </dl>
+            <h2 style="color:green;font-size:20px;">Aparece en</h2>
+            <dl>
+            <% @character.each do |character| %>   
+              <dt><%= character['category'] %></dt>
+              <% end %>
+            </dl>
+            <h2 style="color:green;font-size:20px;">Apodo</h2>
+        <dl>
+        <% @character.each do |character| %>  
+          <dt><%= character['nickname'] %></dt>
+        </dl>
+        <% end %>
+        </div>
+        <div style= "text-align:center"class="column">
+        <h2 style="color:green;font-size:20px;">ID del Personaje</h2>
+        <dl>
+        <% @character.each do |character| %>  
+          <dt><%= character['char_id'] %></dt>
+        </dl>
+        <% end %>
+        <h2 style="color:green;font-size:20px;">Interpretado por</h2>
+        <dl>
+        <% @character.each do |character| %>  
+          <dt><%= character['portrayed'] %></dt>
+        </dl>
+        <% end %>
+        <h2 style="color:green;font-size:20px;">Apariciones en Breaking Bad</h2>
+        <dl>
+        <% @character.each do |character| %>
+        <% character['appearance'].each do |appearance| %>    
+          <dt><%= link_to "Temporada " + appearance.to_s, seasonsbb_index_path(appearance) %></dt>
+          <% end %>
+          <% end %>
+        </dl>
+        <h2 style="color:green;font-size:20px;">Apariciones en Better Call Saul</h2>
+        <dl>
+        <% @character.each do |character| %>
+        <% character['better_call_saul_appearance'].each do |appearance| %>    
+          <dt><%= link_to "Temporada " + appearance.to_s, seasonsbcs_index_path(appearance) %></dt>
+          <% end %>
+          <% end %>
+          <h2 style="color:green;font-size:20px;">Frases</h2>
+        <dl>
+        <% @quotes.each do |quote| %>    
+          <dt><%= quote['quote'] %></dt>
+          <% end %>
+        </dl>
+        </div>
+    </div>
+ </body>
+</html>
